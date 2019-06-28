@@ -1,96 +1,105 @@
-# import bs4 fro  BeautifulSoup
+# 11.5
+
+# Demo3 Naviagting tree
+
+# import the required lib
+
 from bs4 import BeautifulSoup
 
-# create the doc
-html_doc="""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<h1> Heading</h1>
-    <b> ""This is 'comment' l""</b>
+# create the document
+book_shop_doc= """
+<catalog>
 
-    <p title="This is about me" class="test">my first website web scrape</p>
-    <div class="cities">
-    
-    <h2>London</h2>
-    <h2>Mumba</h2>
-    
-    </div>
-    
-</body>
-</html>"""
-# parse it using html parser
+<head> <title>The web book catalog</title></head>
+<p class="title"> <b>The Book Catalog</b></p>
+<books>
+    <book id="bk001">
+    <Author> HighTower</Author>
+    <genre>Fiction</genre>
+    <price>44.34</price>
+    <pub_date>2000-10-10</pub_date>
+    <review>An Amazing story of nothing.</review>
 
-soup = BeautifulSoup(html_doc, 'html.parser')
+    </book>
+    <book id="bk002">
+        <author>Nagata, Suanne</author>
+        <title>Becoming somebody</title>
+        <genre>Biography </genre>
+        <review>A masterPiece of the art</review>
 
-# view the soup type
+    </book>
 
-print('__________type of soup_____')
-print(type(soup))
+    <book id="bk003">
+        <author> Oberg, Bruce </author>
+        <title>The Poet's First Poem</title>
+        <genre>Poem</genre>
+        <price>28.2</price>
+        <review>The Least Poetic Poems</review>
 
-#view the soup object
-print('__________printing the soup_____')
+    </book>
+</books>
+</catalog>
 
-print(soup)
+"""
 
-# create a tag obejc
-print('_________________tag_________________')
-tag=soup.p
-
-# print the tag
-print(tag)
-print('_______________________________')
-
-# below line will give only string inside <b>tag
-comment1=soup.b.string
+# create a soup objects
 
 
-# below line will give only <b> tag
-comment=soup.b
+book_soup=BeautifulSoup(book_shop_doc, 'html.parser')
+# print the catalog tag
+ 
+print(book_soup)
+
+print("-____"*50)
+#  create a sup objects
+print(book_soup.catalog)
 
 
-print(type(comment))
+print("_____________"*40)
+# get head
 
-# print the comment 
-print('_________print comment__________')
-print(comment)
+print(book_soup.head)
 
+print("_____________"*40)
 
-print('_______________________________')
-print('_______________________________')
+# get title tag
 
-
-
-
+title_tag=book_soup.title
+print(title_tag)
 
 
+print("_____________"*40)
 
-print('_______________print the comment by slicing_______________')
+# print catalog bold tag
 
-print(comment1[0:])
+# navigate down the decendents and print them
+for descen in book_soup.head.descendants:
+    print(descen)
 
-print('_______________print the comment by slicing_______________')
-
-print(comment1[0:4])
-
-print('_________print comment by slicing__________')
-print(comment1[0:10])
-
-
-# contains indices (1, 3)
-print(comment1[0:6:2])
-
-# if 
-
-print('______________________________')
-
-print(tag.string)
+# navigate down using stripped stringd method
+for string in book_soup.stripped_strings:
+    print(repr(string))
 
 
-print('______________________________')
-print(comment.string[0:7:])
+print('__________________Parents_______________________________')
+
+# navigate up using the parent method
+
+print(title_tag.parent)
+
+print('_________________________navigate back and Forth_____________')
+
+# create elemet objct to navigate back and forth
+element_soup=book_soup.catalog.books
+print('element_soup: ', element_soup)
+
+print('________===========================___________-')
+
+next_element=element_soup.next_element.next_element
+print(next_element)
+
+print('________===========================___________-')
+
+# navigate to previous sibling
+previous_element=next_element.previous_element.previous_element
+print(previous_element)

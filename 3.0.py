@@ -41,6 +41,7 @@ print('____________________________________')
 
 print(find_id.li.div.string)
 
+
 print('_________________***___________________')
 
 
@@ -205,6 +206,8 @@ all_next=org.findAllNext()
 print(all_next)
 print('____________________________________')
 
+
+# run this in jupyter
 
 from bs4 import BeautifulSoup
 import re

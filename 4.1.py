@@ -4,8 +4,6 @@ school="""
 <address>
 
 <head>
-
-
     <title> this is spiceup academy</title>
 
 

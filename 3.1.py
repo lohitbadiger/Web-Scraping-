@@ -17,7 +17,7 @@ print(type(tag_lr))
 print("-----------"*4) 
 
 print(tag_lr)
-print("-----------"*4) 
+print("---------%--"*4) 
 
 find_name=soup.find(id="name")
 print(find_name)
@@ -25,6 +25,8 @@ print(find_name)
 print('-------------------printing Lohit------------------------------------')
 print(find_name.tr.td.string)
 
+print('~ %'*20)
+print(find_name.find(attrs={"class":"lo"}))
 
 print('-------------------printing classs------------------------------------')
 
@@ -37,3 +39,6 @@ print('------------------- classs------------------------------------')
 
 css_class_attrs=soup.find(attrs={'class':"location"})
 print(css_class_attrs)
+
+
+# next_sibling

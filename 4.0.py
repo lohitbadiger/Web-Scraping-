@@ -14,11 +14,11 @@ book_shop_doc= """
 <p class="title"> <b>The Book Catalog</b></p>
 <books>
     <book id="bk001">
-        <Author> HighTower</Author>
+    <Author> HighTower</Author>
     <genre>Fiction</genre>
-<price>44.34</price>
-<pub_date>2000-10-10</pub_date>
-<review>An Amazing story of nothing.</review>
+    <price>44.34</price>
+    <pub_date>2000-10-10</pub_date>
+    <review>An Amazing story of nothing.</review>
 
     </book>
     <book id="bk002">
@@ -98,7 +98,7 @@ next_element=element_soup.next_element.next_element
 print(next_element)
 
 
-print('________===========================___________-')
+print('________==========previous_element=================___________-')
 
 # navigate back using the previous_element method
 previous_element=next_element.previous_element.previous_element
