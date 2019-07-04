@@ -42,6 +42,8 @@ book_shop_doc= """
 
 """
 
+
+
 # create a soup objects
 
 
