@@ -32,6 +32,7 @@ print('__________printing the soup_____')
 
 print(soup)
 
+
 print('_________________tag_________________')
 tag=soup.p
 print(tag)

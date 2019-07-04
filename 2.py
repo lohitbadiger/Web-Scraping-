@@ -29,15 +29,15 @@ soup=bs(html_doc, 'html.parser')
 
 print(soup)
 
-print('________________________________')
+print('_____________variable___________________')
 variable=soup.h1
 print(variable)
 
-print('________________________________')
+print('_______________variable2_________________')
 variable2=soup.p
 print(variable2)
 
-print('________________________________')
-variable3=soup.b.comment
+print('______________variable3__________________')
+variable3=soup.b.string
 
-print(variable3)
+print(type(variable3))

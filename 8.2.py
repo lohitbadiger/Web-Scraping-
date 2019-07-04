@@ -1,13 +1,30 @@
 from bs4 import BeautifulSoup as soup
+
+# using the urllib Lib for this
+
 from urllib.request import urlopen as uReq
+
+
+
+#  This is Iphone scrapiing
+
 
 my_url ="https://www.flipkart.com/search?q=iphone&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"
 
 uClient=uReq(my_url)
 
+# open the urllib for the reading the file 'established 406'
+
+
 page_html=uClient.read()
 
+
+# connection  being stopped 
 uClient.close()
+
+# creating the soup container
+# adding the Scraper 
+# Html.parser
 
 
 page_soup=soup(page_html,"html.parser")
@@ -20,6 +37,7 @@ containers=page_soup.findAll("div",{"class": "_3O0U0u"})
 
 container=containers[0]
 print(container.div.img['alt'])
+
 
 
 
@@ -50,6 +68,9 @@ for container in containers:
     print("rating" + rating)
 
 
+  
+#   modifying the 
+
     # string parsing
 
     trim_price=''.join(price.split(','))
@@ -66,3 +87,12 @@ for container in containers:
     print(product_name.replace(",", "|")+ " ," + final_price + "," + final_rating + "\n")
     f.write(product_name.replace(",", "|") + ","+ final_price + ", " +final_rating+"\n" )
 f.close()
+
+
+# Apple iPhone X (Space Gray, 64 GB)
+# ₹69,999₹91,90023% offUp to ₹17,900 Off on ExchangeEMI starting from ₹2325/monthGet by 11 AM, TomorrowOffersNo Cost EMISpecial Price
+# # 4.632
+
+# Apple iPhone X (Space Gray, 64 GB)
+# ₹69,999₹91,90023% offUp to ₹17,900 Off on ExchangeEMI starting from ₹2325/monthGet by 11 AM, TomorrowOffersNo Cost EMISpecial Price
+# 4.632
